@@ -3,6 +3,7 @@ import Questao2.Fornecedor;
 import Questao3.Empregado;
 import Questao4.Administrador;
 import Questao5.Operario;
+import Questao6.Vendedor;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -22,5 +23,8 @@ public class App {
 
         Pessoa op1 = new Operario("silva", 40, 564123987, 7, 2500, 1, 1000, 100000);
         System.out.println(op1);
+
+        Vendedor vendedor1 = new Vendedor("alex", 27, 564773987, 10, 2000, 17, 1020, 102000);
+        System.out.println(vendedor1);
     }
 }
