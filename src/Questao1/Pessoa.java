@@ -7,7 +7,7 @@ public class Pessoa {
     private int idade;
     private long cpf;
 
-    public Pessoa(String nome, int idade, int cpf){
+    public Pessoa(String nome, int idade, long cpf){
         setNome(nome);
         setIdade(idade);
         setCpf(cpf);
@@ -36,5 +36,16 @@ public class Pessoa {
      public void setCpf(long cpf){
          this.cpf = cpf;
      }
+
+   @Override
+   public String toString() {
+      
+       return super.toString() + "o nome do garoto é "+ 
+       getNome() + 
+        " ele tem "+ 
+       getIdade() +
+        " anos. Seu cpf é "+ 
+       getCpf();
+   }
 
 }
