@@ -40,9 +40,9 @@ public class Pessoa {
    @Override
    public String toString() {
       
-       return super.toString() + "o nome do garoto é "+ 
+       return super.toString() + "o nome é "+ 
        getNome() + 
-        " ele tem "+ 
+        " tem "+ 
        getIdade() +
         " anos. Seu cpf é "+ 
        getCpf();
