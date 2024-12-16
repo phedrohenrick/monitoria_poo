@@ -4,22 +4,30 @@ import Questao1.Pessoa;
 
 public class Empregado extends Pessoa{
     
-    private int imposto;
+    private double imposto;
     private double salarioBase;
     private double codigoSetor;
 
-    public Empregado(String nome, int idade, int cpf, int imposto, double salarioBase, double CodigoSetor){
-        super(nome, idade, cpf);
+    public Empregado(String nome, String telefone, String endereco, double imposto, double salarioBase, double CodigoSetor){
+        super(nome, telefone, endereco);
         setCodigoSetor(CodigoSetor);
         setImposto(imposto);
         setSalarioBase(salarioBase);
     }
+    
+    public Empregado() {
+    	
+    }
+    
+    public Empregado(String nome, String telefone, String endereco) {
+    	
+    }
 
-    public int getImposto() {
+    public double getImposto() {
         return this.imposto;
     }
 
-    public void setImposto(int imposto) {
+    public void setImposto(double imposto) {
         this.imposto = imposto;
     }
 

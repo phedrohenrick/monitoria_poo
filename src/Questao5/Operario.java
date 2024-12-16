@@ -6,14 +6,18 @@ public class Operario extends Empregado {
     private int comissao;
     private int valorProducao;
 
-    public Operario(String nome, int idade, int cpf, int imposto,
+    public Operario(String nome, String telefone, String endereco, int imposto,
      double salarioBase, double CodigoSetor, int comissao, int valorProducao){
 
-        super(nome, idade, cpf, imposto, salarioBase, CodigoSetor);
+        super(nome, telefone, endereco, imposto, salarioBase, CodigoSetor);
         setComissao(comissao);
         setValorProducao(valorProducao);
         
     }
+    
+    public  Operario() {
+		
+	}
 
     public int getComissao() {
         return this.comissao;
@@ -44,7 +48,7 @@ public class Operario extends Empregado {
         return super.toString() + 
         " com uma comissão de "+
         getComissao() +
-        "valor de produção de " +
+        " valor de produção de " +
         getValorProducao();
     }
 }

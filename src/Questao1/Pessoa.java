@@ -2,15 +2,19 @@ package Questao1;
 
 public class Pessoa {
     
-    public static final String getIdade = null;
+    public static final String getendereco = null;
     private String nome;
-    private int idade;
-    private long cpf;
+    private String endereco;
+    private String telefone;
 
-    public Pessoa(String nome, int idade, long cpf){
+    public Pessoa(String nome, String endereco, String telefone){
         setNome(nome);
-        setIdade(idade);
-        setCpf(cpf);
+        setEndereco(endereco);
+        setTelefone(telefone);
+    }
+    
+    public Pessoa() {
+    	
     }
 
     public String getNome(){
@@ -21,30 +25,30 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public int getIdade(){
-        return idade;
+    public String getEndereco(){
+        return endereco;
      }
  
-     public void setIdade(int idade){
-         this.idade = idade;
+     public void setEndereco(String endereco){
+         this.endereco = endereco;
      }
      
-     public long getCpf(){
-        return cpf;
+     public String getTelefone(){
+        return telefone;
      }
  
-     public void setCpf(long cpf){
-         this.cpf = cpf;
+     public void setTelefone(String telefone){
+         this.telefone = telefone;
      }
 
    @Override
    public String toString() {
-       return super.toString() + "o nome é "+ 
+       return super.toString() + " Nome: "+ 
        getNome() + 
-        " tem "+ 
-       getIdade() +
-        " anos. Seu cpf é "+ 
-       getCpf();
+        " endereço: "+ 
+       getEndereco() +
+        " e telefone : "+ 
+       getTelefone();
    }
 
 }

@@ -6,11 +6,15 @@ public class Vendedor extends Empregado{
     private int comissao;
     private int valorVenda;
    
-    public Vendedor(String nome, int idade, int cpf, int imposto,
+    public Vendedor(String nome, String telefone, String endereco, int imposto,
      double salarioBase, double CodigoSetor, int comissao, int valorProducao){
-        super(nome, idade, cpf, imposto, salarioBase, CodigoSetor);
+        super(nome, telefone, endereco, imposto, salarioBase, CodigoSetor);
         setComissao(comissao);
         setValorVenda(valorProducao);
+    }
+    
+    public Vendedor() {
+    	
     }
 
     public int getComissao() {

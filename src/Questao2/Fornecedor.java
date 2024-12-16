@@ -4,33 +4,41 @@ import Questao1.Pessoa;
 
 public class Fornecedor extends Pessoa  {
 
-    private int valorDivida;
-    private int valorCredito;
+    private double valorDivida;
+    private double valorCredito;
 
-    public Fornecedor(String nome, int idade, int cpf, int valorCredito, int valorDivida){
-            super(nome, idade, cpf);
+    public Fornecedor(String nome, String telefone, String endereco, double valorCredito, double valorDivida){
+            super(nome, telefone, endereco);
             setValorCredito(valorCredito);
             setValorDivida(valorDivida);
     }
+    
+    	public Fornecedor() {
+            
+    	}
+    	
+    	public Fornecedor(String nome, String telefone, String endereco) {
+            
+    	}
 
-    public void setValorDivida(int valorDivida){
+    public void setValorDivida(double valorDivida){
         this.valorDivida = valorDivida;
     }
 
-    public int getValorDivida(){
+    public double getValorDivida(){
         return valorDivida;
     }
 
-    public void setValorCredito(int valorCredito){
+    public void setValorCredito(double valorCredito){
         this.valorCredito = valorCredito;
     }
 
-    public int getValorCredito(){
+    public double getValorCredito(){
         return valorCredito;
     }
 
-    public int valorSaldo(){
-        int saldo =  getValorCredito() - getValorDivida();
+    public double obterSaldo(){
+    	double saldo =  getValorCredito() - getValorDivida();
         return saldo;
     }
 
@@ -40,6 +48,6 @@ public class Fornecedor extends Pessoa  {
         return super.toString() + 
         ". Tem um credito de "+ 
         getValorCredito()+ " e um saldo de " +
-        valorSaldo();
+        obterSaldo();
     }
 }
