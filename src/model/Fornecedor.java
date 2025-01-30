@@ -1,6 +1,4 @@
-package Questao2;
-
-import Questao1.Pessoa;
+package model;
 
 public class Fornecedor extends Pessoa  {
 

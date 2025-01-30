@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -12,21 +13,29 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import Questao3.Empregado;
-import Questao4.Administrador;
-import Questao5.Operario;
-import Questao6.Vendedor;
+import controller.EmpregadoController;
+import controller.FornecedorController;
+import model.Administrador;
+import model.Empregado;
+import model.Fornecedor;
+import model.Operario;
+import model.Vendedor;
 
 public class TelaEmpregado extends JFrame{
 
-    private JPanel form = new JPanel();
+	private ArrayList<Empregado> listaEmpregados = new ArrayList<>();
+    private ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
+	
 
-    private JPanel contratoPanel = new JPanel();
+
+	private JPanel form = new JPanel();
+	private JPanel contratoPanel = new JPanel();
     
     private JTextField imposto = new JTextField();
     private JTextField salarioBase = new JTextField();
     private JTextField codigoSetor = new JTextField();
     
+
 	private JRadioButton administrador = new JRadioButton("Administrador");
 	private JRadioButton operario = new JRadioButton("Operario");
     private JRadioButton vendedor = new JRadioButton("Vendedor");
@@ -35,17 +44,106 @@ public class TelaEmpregado extends JFrame{
 	private JPanel panelBotoes = new JPanel();
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnSair = new JButton("Sair");
-	
-        public TelaEmpregado(Empregado funcionario){
-        	
 
-            setTitle("Registro de Empregado");
+
+	private JTextField ajudaDeCusto = new JTextField();
+
+	public ArrayList<Empregado> getListaEmpregados() {
+		return listaEmpregados;
+	}
+
+	public void setListaEmpregados(ArrayList<Empregado> listaEmpregados) {
+		this.listaEmpregados = listaEmpregados;
+	}
+
+	public ArrayList<Fornecedor> getListaFornecedores() {
+		return listaFornecedores;
+	}
+
+	public void setListaFornecedores(ArrayList<Fornecedor> listaFornecedores) {
+		this.listaFornecedores = listaFornecedores;
+	}
+
+	public JPanel getForm() {
+		return form;
+	}
+
+	public void setForm(JPanel form) {
+		this.form = form;
+	}
+	public JTextField getImposto() {
+		return imposto;
+	}
+
+	public void setImposto(JTextField imposto) {
+		this.imposto = imposto;
+	}
+
+	public JTextField getSalarioBase() {
+		return salarioBase;
+	}
+
+	public void setSalarioBase(JTextField salarioBase) {
+		this.salarioBase = salarioBase;
+	}
+
+	public JTextField getCodigoSetor() {
+		return codigoSetor;
+	}
+
+	public void setCodigoSetor(JTextField codigoSetor) {
+		this.codigoSetor = codigoSetor;
+	}
+
+	public JRadioButton getAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(JRadioButton administrador) {
+		this.administrador = administrador;
+	}
+
+	public JRadioButton getOperario() {
+		return operario;
+	}
+
+	public void setOperario(JRadioButton operario) {
+		this.operario = operario;
+	}
+
+	public JRadioButton getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(JRadioButton vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public JButton getBtnSalvar() {
+		return btnSalvar;
+	}
+
+	public void setBtnSalvar(JButton btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
+
+	public JButton getBtnSair() {
+		return btnSair;
+	}
+
+	public void setBtnSair(JButton btnSair) {
+		this.btnSair = btnSair;
+	}
+
+        public TelaEmpregado(Empregado funcionario, ArrayList<Fornecedor> listaFornecedores, ArrayList<Empregado> listaEmpregados){
+
+			setTitle("Registro de Empregado");
 	        setSize(700, 500);
 	        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	        setLocationRelativeTo(null);
 	        
 	        
-	        form.setLayout(new GridLayout(8,6,5,5));
+	       		form.setLayout(new GridLayout(8,6,5,5));
 	        
 	            form.add(new JLabel("Contrato:"));
 		        contratoGroup.add(administrador);
@@ -55,9 +153,6 @@ public class TelaEmpregado extends JFrame{
 		        contratoPanel.add(operario);
 	            contratoPanel.add(vendedor);
 		        form.add(contratoPanel);
-		        
-         
-               
    
                form.add(new JLabel("Imposto (em %) : "));
                form.add(imposto);
@@ -73,46 +168,14 @@ public class TelaEmpregado extends JFrame{
              // Botões
                panelBotoes.add(btnSalvar);
                panelBotoes.add(btnSair);
-               form.add(panelBotoes, BorderLayout.SOUTH);
-               setVisible(true);
-               
-               btnSair.addActionListener( e -> dispose());
-               btnSalvar.addActionListener(e -> {
-            	  
-            	   
-            	   String campoImpostotxt  = imposto.getText();
-            	   String campoSalarioBasetxt =salarioBase.getText();
-            	   String campoCodigoSetortxt = codigoSetor.getText();
-            	   
-            	   if (campoImpostotxt.isEmpty()|| campoSalarioBasetxt.isEmpty() || campoCodigoSetortxt.isEmpty())  {
-      		            JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
-      		        }else {
-      		        	
-      		        	 try {
-      		        		 double campoImposto  = Double.parseDouble(imposto.getText());
-      	                 	double campoSalarioBase = Integer.parseInt(salarioBase.getText());
-      	                 	double campoCodigoSetor = Integer.parseInt(codigoSetor.getText());
-      	      		        	
-      	      		        	 if(administrador.isSelected()) {
-      	      	            		   this.telaAdmin(campoImposto,campoSalarioBase, campoCodigoSetor, funcionario);
-      	      	            		   
-      	      	            	   }else if(operario.isSelected()) {
-      	      	            		   this.telaOperario(campoImposto,campoSalarioBase, campoCodigoSetor, funcionario);
-      	      	            	   }else if(vendedor.isSelected()) {
-      	      	            		   this.telaVededor(campoImposto,campoSalarioBase, campoCodigoSetor, funcionario);
-      	      	            	   }
-                  	   }catch (Exception e1) {
-       		            JOptionPane.showMessageDialog(this, "Represente o valor decimal do Imposto usando '.' ", "Erro", JOptionPane.ERROR_MESSAGE);
-       		            
-      				}
-      		        	
-      		        	
-      		         }
-  
-               });
+               form.add(panelBotoes);
+			   setVisible(true);
+
+
+			   EmpregadoController empregadoController = new EmpregadoController(this);
         }
-        
-        public void telaAdmin(double imposto, double salarioBase, double codigoSetor, Empregado funcionario) {
+		
+		public void telaAdmin(double imposto, double salarioBase, double codigoSetor, Empregado funcionario) {
         	
 
         	JTextField ajudaDeCusto = new JTextField();
@@ -234,4 +297,6 @@ public class TelaEmpregado extends JFrame{
  	       });
         }
 
+
+		
 	}

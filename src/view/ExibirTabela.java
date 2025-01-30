@@ -7,22 +7,24 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
-import Questao1.Pessoa;
-import Questao2.Fornecedor;
-import Questao3.Empregado;
+import model.Empregado;
+import model.Fornecedor;
+import model.Pessoa;
 
 public class ExibirTabela extends JFrame {
-	
+
 	private DefaultListModel<String> modeloEmpregados;
 	private DefaultListModel<String> modeloFornecedores;
 
+		public ExibirTabela(){
+
+		}
 	    public ExibirTabela(ArrayList<Empregado> empregados, ArrayList<Fornecedor> fornecedores) {
-            JOptionPane.showMessageDialog(this, "Registro salvo com sucesso!");
+            //JOptionPane.showMessageDialog(this, "Registro salvo com sucesso!");
 
 	        setTitle("Gerenciamento de Pessoas");
 	        setSize(400, 300);
@@ -62,6 +64,20 @@ public class ExibirTabela extends JFrame {
 	            modelo.addElement(pessoa.getNome());
 	        }
 	    }
+	public void setModeloEmpregados(DefaultListModel<String> modeloEmpregados) {
+		this.modeloEmpregados = modeloEmpregados;
+	}
 
-	  
+	public void setModeloFornecedores(DefaultListModel<String> modeloFornecedores) {
+		this.modeloFornecedores = modeloFornecedores;
+	}
+
+	public DefaultListModel<String> getModeloEmpregados() {
+		return modeloEmpregados;
+	}
+
+	public DefaultListModel<String> getModeloFornecedores() {
+		return modeloFornecedores;
+	}
+
 }

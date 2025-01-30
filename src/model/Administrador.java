@@ -1,8 +1,6 @@
-package Questao4;
+package model;
 
 import java.awt.Component;
-
-import Questao3.Empregado;
 
 public class Administrador extends Empregado{
 

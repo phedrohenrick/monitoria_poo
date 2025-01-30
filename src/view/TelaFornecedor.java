@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,11 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Questao1.Pessoa;
-import Questao2.Fornecedor;
-import Questao3.Empregado;
-import Questao5.Operario;
+import controller.FornecedorController;
 import factory.FactoryFuncionario;
+import model.Empregado;
+import model.Fornecedor;
+import model.Operario;
+import model.Pessoa;
 
 public class TelaFornecedor extends JFrame {
 	
@@ -22,12 +24,59 @@ public class TelaFornecedor extends JFrame {
 	private JTextField valorCredito = new JTextField();
 	private JTextField valorDivida = new JTextField();
 	
+	
 	private JPanel panelBotoes = new JPanel();
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnSair = new JButton("Sair");
 	
+	public JTextField getValorCredito() {
+		return valorCredito;
+	}
+
+
+
+	public void setValorCredito(JTextField valorCredito) {
+		this.valorCredito = valorCredito;
+	}
+
+
+
+	public JTextField getValorDivida() {
+		return valorDivida;
+	}
+
+
+
+	public void setValorDivida(JTextField valorDivida) {
+		this.valorDivida = valorDivida;
+	}
+
+
+
+	public JButton getBtnSalvar() {
+		return btnSalvar;
+	}
+
+
+
+	public void setBtnSalvar(JButton btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
+
+
+
+	public JButton getBtnSair() {
+		return btnSair;
+	}
+
+
+
+	public void setBtnSair(JButton btnSair) {
+		this.btnSair = btnSair;
+	}
+
 	
-	public TelaFornecedor(Fornecedor pessoa) {
+	public TelaFornecedor( Pessoa pessoa, ArrayList<Fornecedor> listaFornecedores, ArrayList<Empregado> listaEmpregados) {
 		
 		setTitle("Tela Fornecedor");
 		setSize(700, 500);
@@ -51,45 +100,13 @@ public class TelaFornecedor extends JFrame {
         panelBotoes.add(btnSair);
         form.add(panelBotoes, BorderLayout.SOUTH);
         setVisible(true);
-
-        btnSair.addActionListener(e -> System.exit(0));
-        btnSalvar.addActionListener(e ->{ 
-	        String creadito = valorCredito.getText();
-	        String divida = valorDivida.getText();
-
-        	//ao salvar verifica se os campos sao vazios
-        	if (creadito.isEmpty() || divida.isEmpty() ) {
-	            JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
-	        }else {
-	        	
-	        	try {
-	        		Double valorCredito = Double.parseDouble(creadito);
-		        	Double valorDivida = Double.parseDouble(divida);
-		 	    	  
-		 	    	  Fornecedor funcionario1 = new Fornecedor();
-		 	    	  funcionario1.setNome(pessoa.getNome());
-		 	    	  funcionario1.setEndereco(pessoa.getEndereco());
-		 	    	  funcionario1.setTelefone(pessoa.getTelefone());
-		 	    	  funcionario1.setValorCredito(valorCredito);
-		 	    	  funcionario1.setValorDivida(valorDivida);
-		 	    	  
-		 	    	  JOptionPane.showMessageDialog(null, funcionario1.toString());   	  
-			    	   System.exit(0);
-	        	}catch (Exception e2) {
-					JOptionPane.showMessageDialog(this, "Caracteres nao aceitos, entre com outros valores e tente novamente", "Erro", JOptionPane.ERROR_MESSAGE);
-				}
-	        	
-	            
-	            
-	        }
-
-        	// limpando os campos - função
-            valorCredito.setText("");
-            valorDivida.setText("");
-              		
-       });
         
+
+		FornecedorController controllerFornecedor = new FornecedorController(this, pessoa, listaEmpregados, listaFornecedores);
 		
 	}
 
+
+
+	
 }

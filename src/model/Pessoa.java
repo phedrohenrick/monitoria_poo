@@ -1,4 +1,4 @@
-package Questao1;
+package model;
 
 public class Pessoa {
     

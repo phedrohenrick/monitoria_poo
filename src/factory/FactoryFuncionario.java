@@ -1,11 +1,11 @@
 package factory;
 
-import Questao1.Pessoa;
-import Questao2.Fornecedor;
-import Questao3.Empregado;
-import Questao4.Administrador;
-import Questao5.Operario;
-import Questao6.Vendedor;
+import model.Administrador;
+import model.Empregado;
+import model.Fornecedor;
+import model.Operario;
+import model.Pessoa;
+import model.Vendedor;
 
 public class FactoryFuncionario {
 	
