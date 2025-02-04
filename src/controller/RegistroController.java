@@ -29,7 +29,14 @@ public class RegistroController {
 
     public void initController() {
         telaRegistro.getBtnSair().addActionListener(e -> System.exit(0));
-        telaRegistro.getBtnSalvar().addActionListener(e -> handleSalvar());
+        telaRegistro.getBtnSalvar().addActionListener(e -> {
+            try {
+                handleSalvar();
+            } catch (ExceptionController e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        });
     }
 
 
@@ -48,13 +55,14 @@ public class RegistroController {
 	  
 		 public void abrirTelaEmpregado(Empregado pessoa) {
 				  TelaEmpregado registrarEmpregado = new TelaEmpregado(pessoa, this.listaFornecedores, this.listaEmpregados);
+                  
 		 }
 		 public void abrirTelaFornecedor(Fornecedor pessoa) {
 			TelaFornecedor registrarFornecedor = new TelaFornecedor(pessoa, this.listaFornecedores, this.listaEmpregados);
 
 		 }
 
-         public void handleSalvar(){
+         public void handleSalvar() throws ExceptionController {
              
 		        String nome = telaRegistro.getCampoNome().getText();
 		        String telefone = telaRegistro.getCampoTelefone().getText();
@@ -62,7 +70,7 @@ public class RegistroController {
 
 	        	//ao salvar verifica se os campos sao vazios
 	        	if (nome.isEmpty() || telefone.isEmpty() || endereco.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    throw new ExceptionController("Preencha todos os campos!");
 		        }else {
 
 		            // verifica qual dos dois objetos serão instanciados - função

@@ -7,30 +7,36 @@ import model.Administrador;
 import model.Empregado;
 import model.Fornecedor;
 import view.TelaEmpregado;
+import view.TelaRegistro;
 import view.ExibirTabela;
-
 
 public class EmpregadoController {
 
-    private TelaEmpregado telaEmpregado;
     private ArrayList<Empregado> listaEmpregados = new ArrayList<>();
     private ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
     private Empregado funcionario = new Empregado();
- 
+    private TelaEmpregado telaEmpregado;
 
     public EmpregadoController(TelaEmpregado telaEmpregado){
         
         this.telaEmpregado = telaEmpregado;
         //this.listaFornecedores = listaFornecedores;
         //this.listaEmpregados = listaEmpregados;
-        //this.funcionario = funcionário;
+       // this.funcionario = TelaEmpregado.getFuncionario();
         initController();
         
     }
 
     public void initController(){
         telaEmpregado.getBtnSair().addActionListener(e->System.exit(0));
-        telaEmpregado.getBtnSalvar().addActionListener(e->handleEmpregado());
+        telaEmpregado.getBtnSalvar().addActionListener(e->
+        {
+            try {
+                handleEmpregado();
+            } catch (ExceptionController e1) {
+                e1.printStackTrace();
+            }
+        });
     }
 
     public Empregado getFuncionario() {
@@ -66,7 +72,7 @@ public class EmpregadoController {
     }
 
 
-    public void handleEmpregado(){
+    public void handleEmpregado() throws ExceptionController{
         
             	  
             	   
@@ -84,18 +90,16 @@ public class EmpregadoController {
       	                 	double campoCodigoSetor = Integer.parseInt(telaEmpregado.getCodigoSetor().getText());
       	      		        	
       	      		        	 if(telaEmpregado.getAdministrador().isSelected()) {
-      	      	            		   this.handletelaAdmin(campoImposto,campoSalarioBase, campoCodigoSetor, funcionario,listaFornecedores, listaEmpregados);
-
+      	      	            		   this.handletelaAdmin(campoImposto,campoSalarioBase, campoCodigoSetor, getFuncionario() ,listaFornecedores, listaEmpregados);
 									 }else if(telaEmpregado.getOperario().isSelected()) {
                                         this.handletelaOperario(campoImposto, campoSalarioBase, campoCodigoSetor, funcionario, listaFornecedores, listaEmpregados);      	      	            	   
                                     }else if(telaEmpregado.getVendedor().isSelected()) {
                                         this.handletelaVendedor(campoImposto, campoSalarioBase, campoCodigoSetor, funcionario, listaFornecedores, listaEmpregados);
       	      	            	   }
                   	   }catch (Exception e1) {
-       		            JOptionPane.showMessageDialog(null, "Represente o valor decimal do Imposto usando '.' ", "Erro", JOptionPane.ERROR_MESSAGE);
        		            
-      				}
-      		        	
+                        throw new ExceptionController("represente o valor decimal usando ponto ");
+                       }      		        	
       		        	
       		         }
   
@@ -103,7 +107,7 @@ public class EmpregadoController {
    
     public void handletelaAdmin(double imposto, double salarioBase, double codigoSetor, Empregado funcionario, ArrayList<Fornecedor> listaFornecedor, ArrayList<Empregado> listaEmpregados) {
        
-      telaEmpregado.telaAdmin(imposto, salarioBase, codigoSetor, funcionario);
+        telaEmpregado.telaAdmin(imposto, salarioBase, codigoSetor, telaEmpregado.getFuncionario());
        
     }
 
@@ -119,8 +123,10 @@ public class EmpregadoController {
         
     
 
-          public void exibirTabela(ArrayList<Fornecedor> listaFornecedores, ArrayList<Empregado> listaEmpregados){
+     public void exibirTabela(ArrayList<Fornecedor> listaFornecedores, ArrayList<Empregado> listaEmpregados){
 			ExibirTabela a = new ExibirTabela(listaEmpregados, listaFornecedores);
-		}
+	}
+
+   
     
 }

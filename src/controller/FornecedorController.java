@@ -29,7 +29,13 @@ public class FornecedorController {
 
     public void initController(){
         telaFonecedor.getBtnSair().addActionListener(e ->System.exit(0));
-        telaFonecedor.getBtnSalvar().addActionListener(e -> handleFornecedor());
+        telaFonecedor.getBtnSalvar().addActionListener(e -> {
+            try {
+                handleFornecedor();
+            } catch (ExceptionController e1) {
+                e1.printStackTrace();
+            }
+        });
     }
 
     public ArrayList<Empregado> getListaEmpregados() {
@@ -63,7 +69,7 @@ public class FornecedorController {
         
            
         
-            public void handleFornecedor(){
+            public void handleFornecedor() throws ExceptionController{
                     
                     String creadito = telaFonecedor.getValorCredito().getText();
                     String divida = telaFonecedor.getValorDivida().getText();
@@ -88,8 +94,8 @@ public class FornecedorController {
                                 ExibirTabela(listaFornecedores, listaEmpregados);
 			    	   //System.exit(0);
 	        	}catch (Exception e2) {
-					JOptionPane.showMessageDialog(null, "Caracteres nao aceitos, entre com outros valores e tente novamente", "Erro", JOptionPane.ERROR_MESSAGE);
-
+					
+                    throw new ExceptionController("Caracteres nao aceitos, entre com outros valores e tente novamente");
 				}
 	        	
 	            

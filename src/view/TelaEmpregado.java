@@ -48,6 +48,16 @@ public class TelaEmpregado extends JFrame{
 
 	private JTextField ajudaDeCusto = new JTextField();
 
+	private  Empregado funcionario = new Empregado();
+		
+	public  Empregado getFuncionario() {
+			return funcionario;
+	}
+
+	public void setFuncionario(Empregado funcionario) {
+		this.funcionario = funcionario;
+	}
+
 	public ArrayList<Empregado> getListaEmpregados() {
 		return listaEmpregados;
 	}
@@ -135,7 +145,13 @@ public class TelaEmpregado extends JFrame{
 		this.btnSair = btnSair;
 	}
 
+
+
         public TelaEmpregado(Empregado funcionario, ArrayList<Fornecedor> listaFornecedores, ArrayList<Empregado> listaEmpregados){
+			
+			this.funcionario = funcionario;
+			this.listaFornecedores = listaFornecedores;
+			this.listaEmpregados = listaEmpregados;
 
 			setTitle("Registro de Empregado");
 	        setSize(700, 500);
@@ -174,6 +190,8 @@ public class TelaEmpregado extends JFrame{
 
 			   EmpregadoController empregadoController = new EmpregadoController(this);
         }
+
+		
 		
 		public void telaAdmin(double imposto, double salarioBase, double codigoSetor, Empregado funcionario) {
         	
