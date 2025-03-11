@@ -2,13 +2,13 @@
 
 Bem-vindo ao repositório **monitoria_poo**! Aqui, você encontrará materiais e exemplos práticos para auxiliar no aprendizado de **Programação Orientada a Objetos (POO)** em Java. Este repositório foi criado para apoiar os alunos que participam da monitoria e desejam reforçar seus conhecimentos na disciplina.
 
-## 📖 Sobre o Repositório
+## Sobre o Repositório
 
 Este repositório contém:
-- 📌 **Explicações teóricas** sobre os principais conceitos de POO.
-- 💻 **Exemplos de código** práticos e bem documentados.
-- 📂 **Exercícios e desafios** para fortalecer o aprendizado.
-- 🔄 **Threads organizadas** com os conteúdos abordados na disciplina.
+-  **Explicações teóricas** sobre os principais conceitos de POO.
+-  **Exemplos de código** práticos e bem documentados.
+-  **Exercícios e desafios** para fortalecer o aprendizado.
+-  **Threads organizadas** com os conteúdos abordados na disciplina.
 
 ## 🛠️ Conceitos Abordados
 
