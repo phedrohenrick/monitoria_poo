@@ -24,7 +24,7 @@ Os seguintes conceitos de POO estão documentados neste projeto:
 ✅ **Design Patterns básicos**  
 ✅ **Boas práticas de codificação**  
 
-## 🚀 Como Utilizar este Repositório
+## Como Utilizar este Repositório
 
 1. **Clone o repositório:**
    ```bash
@@ -41,8 +41,8 @@ Sinta-se à vontade para contribuir com melhorias, sugestões e novas implementa
 ## 📩 Contato
 
 Caso precise de ajuda ou queira trocar ideias sobre POO e Java, entre em contato:
-📧 **Email:** phedrohenrickdasilva@gmail.com
-🐙 **GitHub:** [phedrohenrick](https://github.com/phedrohenrick)  
+**Email:** phedrohenrickdasilva@gmail.com
+**GitHub:** [phedrohenrick](https://github.com/phedrohenrick)  
 
 📌 **Bons estudos e bom código!** 🚀
 
