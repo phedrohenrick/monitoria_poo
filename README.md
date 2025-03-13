@@ -28,13 +28,12 @@ Os seguintes conceitos de POO estão documentados neste projeto:
 ✅ **Boas práticas de codificação**  
 
 ## Como Utilizar este Repositório
-
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/seu-usuario/monitoria_poo.git
    ```
 2. **Acesse os diretórios e arquivos** conforme os tópicos que deseja estudar.
-3. **Experimente os códigos**, modifique e execute para compreender melhor os conceitos.
+3. **Faça o download do código**, modifique e execute para compreender melhor os conceitos.
 4. **Acompanhe as threads** para uma visão estruturada dos conteúdos abordados.
 
 ## 💡 Contribuições
