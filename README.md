@@ -9,6 +9,9 @@ Este repositório contém:
 -  **Exemplos de código** práticos e bem documentados.
 -  **Exercícios e desafios** para fortalecer o aprendizado.
 -  **Threads organizadas** com os conteúdos abordados na disciplina.
+  
+## Como acessar os código?
+Os códigos e exemplos desenvolvidos estão em branches separadas, onde cada branch diz respeito a algum conteúdo específico. Fique atento aos nomes de cada uma. Caso haja dúvidas entre em contato comigo pelos meios conhecidos.
 
 ## 🛠️ Conceitos Abordados
 
